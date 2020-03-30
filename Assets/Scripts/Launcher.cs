@@ -141,7 +141,6 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             if (PlayerPrefs.HasKey(key))
                 _inputField.text = PlayerPrefs.GetString(key);
-
         }
         else
             Debug.Log("Inputfield == null");
