@@ -98,7 +98,12 @@ public class Launcher : MonoBehaviourPunCallbacks
             //Debug.Log(PhotonNetwork.CurrentRoom.PlayerCount);
             playerNumbers.text = "Current players in room: " + PhotonNetwork.PlayerList.Length;
         }
+    }
 
+    public void ExecuteDebug()
+    {
+        Debug.Log("Current amount of rooms on server: " + PhotonNetwork.CountOfRooms);
+        SetupRoom("TEST kamer");
     }
 
     /// <summary>
@@ -114,8 +119,10 @@ public class Launcher : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings();
         }
     }
-
-    private void SetupRoom()
+    /// <summary>
+    /// Makes a room on the server with the right settings
+    /// </summary>
+    private void SetupRoom(string name = "Plantion Veiling")
     {
         RoomOptions roomOptions = new RoomOptions()
         {
@@ -123,7 +130,7 @@ public class Launcher : MonoBehaviourPunCallbacks
             IsVisible = true,
             MaxPlayers = byte.Parse(maxPlayersPerRoom)
         };
-        PhotonNetwork.CreateRoom(roomName, roomOptions, null);
+        PhotonNetwork.CreateRoom(name, roomOptions, null);
         Debug.Log("Created Room");
     }
 
